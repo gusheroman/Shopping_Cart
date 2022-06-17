@@ -14,6 +14,7 @@ const useStyles = makeStyles(() => ({
   },
   container: {
     margin: "0px 220px",
+    paddingBottom: "220px",
   },
 
   link: { color: "black" },
@@ -24,8 +25,8 @@ const Index = () => {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-      <Slider />
-      <Box
+        <Slider />
+        <Box
           style={{
             display: "flex",
             justifyContent: "space-between",

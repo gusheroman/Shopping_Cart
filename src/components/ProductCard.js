@@ -80,7 +80,7 @@ const ProductCard = ({
       className={classes.root}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      // onClick={() => navigate(`/product-detail/${ID}`)}
+      onClick={() => navigate(`/product-detail/${ID}`)}
       style={{ boxShadow: `${boxShadow}` }}
     >
       <div className={classes.cardContainer}>
@@ -99,7 +99,7 @@ const ProductCard = ({
         </div>
         <div className={classes.imageContainer}>
           <Box style={{ display: "flex", justifyContent: "space-between" }}>
-            <img className={classes.image} src={coverBookImage} alt="Logo" />
+            <img className={classes.image} src={coverBookImage} alt="coverBookImage" />
             {isHovering && (
               <Box>
                 <EqualizerRoundedIcon style={{ margin: "0px 20px" }} />
