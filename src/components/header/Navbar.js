@@ -8,8 +8,12 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 import Avatar from "@material-ui/core/Avatar";
 import johnAvatar from "../../assests/image/john.jpg";
-import { Typography } from "@material-ui/core";
-import { SearchBar } from "../input/SearchBar";
+import {
+  FilledInput,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
@@ -22,9 +26,8 @@ const useStyles = makeStyles(() => ({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
     paddingLeft: "122px",
     paddingRight: "122px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display:"flex",
+    justifyContent:"space-between"
   },
 
   menuTitle: {
@@ -36,81 +39,92 @@ const useStyles = makeStyles(() => ({
   row: {
     color: "black",
     textDecoration: "none",
-    marginRight: "26px",
-    fontFamily: "prompt",
-    fontStyle: "normal",
-    fontSize: "16px",
-    fontWeight: 400,
-    lineHeight: "26px",
-    color: "#000000",
+  },
+  searchBar:{
+    height:"60px"
   },
   icon: {
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
-    marginRight: "20px",
   },
   avatar: {
     marginLeft: "20px",
-    width: "36px",
-    height: "36px",
+    width: "35px",
+    height: "35px",
   },
 }));
 const Navbar = () => {
   const classes = useStyles();
   const [handleOpenSearch, setHandleOpenSearch] = useState(false);
+  const [values, setValues] = useState("");
+
+  const handleChange = (e) => {
+    setValues(e.target.value);
+  };
 
   return (
     <div className={classes.root}>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <Link className={classes.row} to={"/"}>
-          <Typography variant="h1" className={classes.menuTitle}>
-            Book
-          </Typography>
-        </Link>
+        <Box style={{ display: "flex", flexGrow: "1" }}>
+          <Link className={classes.row} to={"/"}>
+            <Typography variant="h1" className={classes.menuTitle}>
+              Book
+            </Typography>
+          </Link>
 
-        {handleOpenSearch === false ? (
-          <>
-            <ul className={classes.menuItems}>
-              <Box style={{ display: "flex" }}>
-                {MenuItems.map((val, key) => {
-                  return (
-                    <li key={key} style={{ paddingLeft: "32px" }}>
-                      <Link className={classes.row} to={val.url}>
-                        {val.title}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </Box>
-            </ul>
-          </>
-        ) : (
-          <></>
-        )}
+          {handleOpenSearch === false ? (
+            <>
+              <div className={classes.container}>
+                <ul className={classes.menuItems}>
+                  <Box style={{ display: "flex" }}>
+                    {MenuItems.map((val, key) => {
+                      return (
+                        <li key={key} style={{ paddingLeft: "32px" }}>
+                          <Link className={classes.row} to={val.url}>
+                            <Typography variant="menuItem">
+                              {val.title}
+                            </Typography>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </Box>
+                </ul>
+                <div className={classes.icon}></div>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </Box>
       </Box>
       {handleOpenSearch === false ? (
         <div className={classes.icon}>
           <SearchIcon
-            style={{ marginRight: "32px" }}
             onClick={() => {
               setHandleOpenSearch(true);
             }}
           />
-          <ShoppingCartOutlinedIcon style={{ marginRight: "18px" }} />
+          <ShoppingCartOutlinedIcon />
           <Avatar className={classes.avatar} alt="John Doe" src={johnAvatar} />
         </div>
       ) : (
         <>
-          <SearchBar />
+          <FilledInput
+          fullWidth
+          className={classes.searchBar}
+            value={values}
+            onChange={handleChange}
+            endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
+          />
           <div className={classes.icon}>
             <CloseIcon
-              style={{ marginRight: "32px" }}
               onClick={() => {
                 setHandleOpenSearch(false);
               }}
             />
-            <ShoppingCartOutlinedIcon style={{ marginRight: "18px" }} />
+            <ShoppingCartOutlinedIcon />
             <Avatar
               className={classes.avatar}
               alt="John Doe"

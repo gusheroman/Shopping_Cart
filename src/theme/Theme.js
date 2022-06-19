@@ -60,13 +60,5 @@ export const theme = createTheme({
       lineHeight: "27px",
       color: "#000000",
     },
-    subtitle2:{
-      fontFamily: "prompt",
-      fontStyle: "normal",
-      fontSize: "16px",
-      fontWeight: 500,
-      lineHeight: "26px",
-      color: "#000000",
-    }
   },
 });
