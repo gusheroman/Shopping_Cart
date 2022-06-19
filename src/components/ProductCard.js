@@ -11,7 +11,11 @@ import Button from "@material-ui/core/Button";
 import RadioButtonUncheckedOutlinedIcon from "@material-ui/icons/RadioButtonUncheckedOutlined";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import CancelIcon from "@material-ui/icons/Cancel";
+<<<<<<< HEAD
 import { Typography } from "@material-ui/core";
+=======
+import { Typography, InputAdornment } from "@material-ui/core";
+>>>>>>> parent of c76f2db (Update ProductCard(add button))
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -40,7 +44,68 @@ const useStyles = makeStyles({
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     },
   },
+<<<<<<< HEAD
   availableContainer: {},
+=======
+  availableContainer: {
+    padding: "0px 11px",
+    color: "#78A962",
+    fontSize: "10px",
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    fontFamily: "Prompt",
+    marginTop: "8px",
+  },
+  unAvailableContainer: {
+    padding: "0px 11px",
+    color: "red",
+    fontSize: "10px",
+    fontFamily: "Prompt",
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    marginTop: "8px",
+  },
+  imageContainer: {
+    margin: "8px 32px",
+  },
+  image: {
+    maxWidth: "100%",
+    maxHeight: "160px",
+    height: "160px",
+  },
+  rating: {
+    padding: "4px 10px 10px 0px",
+
+    "&.MuiRating-root": {
+      fontSize: "13px",
+    },
+  },
+  reviews: {
+    margin: "2px",
+    color: "grey",
+    fontFamily: "Prompt",
+    fontSize: "12px",
+  },
+  bookName: {
+    fontSize: "14px",
+    fontFamily: "Prompt",
+    fontWeight: 600,
+  },
+  discountPrice: {
+    textDecoration: "line-through",
+    color: "grey",
+    ontSize: "14px",
+    fontFamily: "Prompt",
+    fontWeight: 400,
+  },
+  price:{
+    ontSize: "18px",
+    fontFamily: "Prompt",
+    fontWeight: 600,
+  }
+>>>>>>> parent of c76f2db (Update ProductCard(add button))
 });
 
 const ProductCard = ({
@@ -65,6 +130,28 @@ const ProductCard = ({
               animi porro accusamus deleniti quae perspiciatis. Sint cum
               perferendis distinctio, magnam aperiam aliquid incidunt.
             </div>
+<<<<<<< HEAD
+=======
+            <Box style={{ display: "flex", justifyContent: "flex-start" }}>
+              <Rating
+                className={classes.rating}
+                name="read-only"
+                value={rating}
+                readOnly
+              />
+              <span className={classes.reviews}>
+                Reviews {"("}
+                {rating}
+                {")"}
+              </span>
+            </Box>
+            <Typography className={classes.bookName}>{bookName}</Typography>
+            <Typography className={classes.discountPrice}>
+              THB {price - 100}.00
+            </Typography>
+            <Typography className={classes.price}>THB {price}.00</Typography>
+          </div>
+>>>>>>> parent of c76f2db (Update ProductCard(add button))
         </div>
       </div>
     </div>
