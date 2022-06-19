@@ -4,7 +4,6 @@ import Box from "@material-ui/core/Box";
 import { useParams } from "react-router-dom";
 import Book from "../data/Book.json";
 import { Typography } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { ShareIcon } from "../components/ShareIcon";
@@ -37,6 +36,7 @@ const useStyles = makeStyles({
     width: "127px",
     height: "192px",
     marginRight: "28px",
+    cursor: "pointer",
   },
   tabSelect: {
     margin: "74px 0px",
@@ -45,6 +45,12 @@ const useStyles = makeStyles({
     },
     "& .MuiTab-root": {
       textTransform: "none",
+      fontFamily: "prompt",
+      fontStyle: "normal",
+      fontSize: "14px",
+      fontWeight: 600,
+      lineHeight: "21px",
+      color: "#666666",
     },
 
     "& .Mui-selected": {
@@ -63,6 +69,7 @@ const ProductDetail = () => {
   const classes = useStyles();
   const [data, setData] = useState({});
   const [value, setValue] = useState(0);
+  const [image, setImage] = useState(false);
 
   useEffect(() => {
     const data = Book.find((data) => String(data.ID) === ID);
@@ -74,6 +81,7 @@ const ProductDetail = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return (
     <div className={classes.container}>
       <Box
@@ -82,11 +90,19 @@ const ProductDetail = () => {
           justifyContent: "flex-start",
         }}
       >
-        <img
-          className={classes.BookPreviewImage}
-          src={data.coverBookImage}
-          alt="coverBookImage"
-        />
+        {image === false ? (
+          <img
+            className={classes.BookPreviewImage}
+            src={data.coverBookImage}
+            alt="coverBookImage"
+          />
+        ) : (
+          <img
+            className={classes.BookPreviewImage}
+            src={data.backBookImage}
+            alt="backBookImage"
+          />
+        )}
         <div className={classes.ProductDetailContainer}>
           <Typography variant="h2">{data.bookName}</Typography>
           <div className={classes.ProductDetailChildContainer}>
@@ -150,43 +166,64 @@ const ProductDetail = () => {
       </Box>
       <Box style={{ marginTop: "20px" }}>
         <img
+          onClick={() => {
+            setImage(false);
+          }}
           className={classes.coverBookPreview}
           src={data.coverBookImage}
           alt="coverBookImage"
         />
         <img
+          onClick={() => {
+            setImage(true);
+          }}
           className={classes.coverBookPreview}
           src={data.backBookImage}
           alt="backBookImage"
         />
       </Box>
-      <Paper>
-        <Tabs
-          className={classes.tabSelect}
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-        >
-          <Tab label="เกี่ยวกับสินค้า" />
-          <Tab label="รายละเอียด" />
-        </Tabs>
-      </Paper>
+      <Tabs
+        className={classes.tabSelect}
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+      >
+        <Tab label="เกี่ยวกับสินค้า" />
+        <Tab label="รายละเอียด" />
+      </Tabs>
       {value === 0 ? (
         <>
-          <Typography variant="subtitle1" gutterBottom>
-            สำนักพิมพ์ : รสชาติของผลไม้ที่ยังไม่สุกงอม
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            style={{ fontWeight: 700 }}
+          >
+            รายละเอียด :{" "}
+            <span style={{ fontWeight: 400 }}>{data.bookName}</span>
           </Typography>
-          <Typography variant="subtitle1" gutterBottom>
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            style={{ fontWeight: 200 }}
+          >
             {data.bookDetail}
           </Typography>
         </>
       ) : (
         <>
-          <Typography variant="subtitle1" gutterBottom>
-            สำนักพิมพ์ : รสชาติของผลไม้ที่ยังไม่สุกงอม
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            style={{ fontWeight: 700 }}
+          >
+            รายละเอียด :{" "}
+            <span style={{ fontWeight: 400 }}>{data.bookName}</span>
           </Typography>
-          <Typography variant="subtitle1" gutterBottom>
+          <Typography
+            variant="subtitle1"
+            gutterBottom
+            style={{ fontWeight: 200 }}
+          >
             {data.bookDetail}
           </Typography>
         </>
