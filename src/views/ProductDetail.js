@@ -10,8 +10,11 @@ import { ShareIcon } from "../components/ShareIcon";
 import { AddButton } from "../components/button/AddButton";
 import { WishListButton } from "../components/button/WishListButton";
 import { NumberInput } from "../components/input/NumberInput";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+
 const useStyles = makeStyles({
-  container: { margin: "0px 122px", padding: "56px 0px 0px 0px " },
+  container: { margin: "0px 122px", padding: "56px 0px 0px 0px" },
   BookPreviewImage: {
     height: "580px",
     width: "394px",
@@ -56,6 +59,7 @@ const useStyles = makeStyles({
     "& .Mui-selected": {
       color: "black",
     },
+    //แปลกๆ
     "& .PrivateTabIndicator-root-31": {
       height: "2px",
       width: "100%",
@@ -148,7 +152,7 @@ const ProductDetail = () => {
           >
             <NumberInput />
             <AddButton />
-            <WishListButton />
+            <WishListButton isWishListButton={true} />
           </Box>
           <Box
             style={{

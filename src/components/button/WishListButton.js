@@ -16,19 +16,23 @@ const useStyles = makeStyles({
       fontFamily: "prompt",
       fontSize: "14px",
     },
-  },
+  }
 });
 
-export const WishListButton = () => {
-  const classes = useStyles();
-
+export const WishListButton = ({
+  variant = "contained",
+  startIcon,
+  isWishListButton,
+}) => {
+  const classes = useStyles({ color: "red" });
+  console.log(isWishListButton);
   return (
     <Button
-      variant="contained"
+      variant={variant}
       color="primary"
       size="large"
-      className={classes.wishListButton}
-      startIcon={<FavoriteIcon />}
+      className={isWishListButton ? classes.wishListButton : isAddButton ? classes.AddButon : classes.outLineButton}
+      startIcon={startIcon}
     >
       WishList
     </Button>

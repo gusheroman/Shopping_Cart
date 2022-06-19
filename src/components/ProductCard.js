@@ -1,32 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
-import EqualizerRoundedIcon from "@material-ui/icons/EqualizerRounded";
-import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
-import Button from "@material-ui/core/Button";
-import RadioButtonUncheckedOutlinedIcon from "@material-ui/icons/RadioButtonUncheckedOutlined";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import CancelIcon from "@material-ui/icons/Cancel";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { Typography } from "@material-ui/core";
-=======
-import { Typography, InputAdornment } from "@material-ui/core";
->>>>>>> parent of c76f2db (Update ProductCard(add button))
-=======
-import { Typography } from "@material-ui/core";
->>>>>>> parent of 4b91f17 (Updatae Product Card)
+import { AddToCardButton } from "./button/AddToCardButton";
 const useStyles = makeStyles({
   root: {
     display: "flex",
   },
   parentContainer: {
     position: "relative",
-    width: "300px",
+    width: "234px",
     height: "300px",
     padding: 0,
     display: "inline-block",
@@ -34,24 +21,23 @@ const useStyles = makeStyles({
     cursor: "pointer",
   },
   childContainer: {
-    padding: "24px",
+    padding: "0px 25px",
     position: "absolute",
     top: 0,
     left: 0,
-    width: "300px",
+    width: "234px",
     height: "300px",
-    background: "red",
+    background: "white",
     "&:hover": {
       height: "350px",
-      backgroundColor: "red",
+      backgroundColor: "white",
       zIndex: 10,
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+      "& $unHiddenOnHover": {
+        display: "flex",
+      },
     },
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-  availableContainer: {},
-=======
   availableContainer: {
     padding: "0px 11px",
     color: "#78A962",
@@ -81,14 +67,13 @@ const useStyles = makeStyles({
     height: "160px",
   },
   rating: {
-    padding: "4px 10px 10px 0px",
+    padding: "2px 10px 2px 0px",
 
     "&.MuiRating-root": {
       fontSize: "13px",
     },
   },
   reviews: {
-    margin: "2px",
     color: "grey",
     fontFamily: "Prompt",
     fontSize: "12px",
@@ -96,24 +81,29 @@ const useStyles = makeStyles({
   bookName: {
     fontSize: "14px",
     fontFamily: "Prompt",
-    fontWeight: 600,
+    fontWeight: 500,
+    marginBottom: "12px",
   },
   discountPrice: {
     textDecoration: "line-through",
     color: "grey",
-    ontSize: "14px",
+    fontSize: "14px",
     fontFamily: "Prompt",
     fontWeight: 400,
   },
-  price:{
+  price: {
     ontSize: "18px",
     fontFamily: "Prompt",
     fontWeight: 600,
-  }
->>>>>>> parent of c76f2db (Update ProductCard(add button))
-=======
-  availableContainer: {},
->>>>>>> parent of 4b91f17 (Updatae Product Card)
+  },
+  unHiddenOnHover: {
+    display: "none",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#fff",
+    marginBottom: "24px",
+    cursor: "pointer",
+  },
 });
 
 const ProductCard = ({
@@ -129,18 +119,35 @@ const ProductCard = ({
 
   return (
     <div className={classes.root}>
-      <div className={classes.parentContainer}>
+      <div
+        className={classes.parentContainer}
+        onClick={() => navigate(`/product-detail/${ID}`)}
+      >
         <div className={classes.childContainer}>
-        <h4>ลอง hover ดูสิจ้ะ</h4>
-            <div>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia
-              exercitationem recusandae, saepe nesciunt quaerat molestias dolore
-              animi porro accusamus deleniti quae perspiciatis. Sint cum
-              perferendis distinctio, magnam aperiam aliquid incidunt.
+          <div class={classes.content}>
+            {available === true ? (
+              <div className={classes.availableContainer}>
+                <CheckCircleIcon style={{ fontSize: "10px" }} />
+                <span>มีสินค้า</span>
+              </div>
+            ) : (
+              <div className={classes.unAvailableContainer}>
+                <CancelIcon style={{ fontSize: "10px" }} />
+                <span>ไม่มีสินค้า</span>
+              </div>
+            )}
+            <div className={classes.imageContainer}>
+              <Box style={{ display: "flex", justifyContent: "space-between" }}>
+                <img
+                  className={classes.image}
+                  src={coverBookImage}
+                  alt="coverBookImage"
+                />
+              </Box>
             </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+            <div className={classes.unHiddenOnHover}>
+              <AddToCardButton />
+            </div>
             <Box style={{ display: "flex", justifyContent: "flex-start" }}>
               <Rating
                 className={classes.rating}
@@ -160,9 +167,6 @@ const ProductCard = ({
             </Typography>
             <Typography className={classes.price}>THB {price}.00</Typography>
           </div>
->>>>>>> parent of c76f2db (Update ProductCard(add button))
-=======
->>>>>>> parent of 4b91f17 (Updatae Product Card)
         </div>
       </div>
     </div>

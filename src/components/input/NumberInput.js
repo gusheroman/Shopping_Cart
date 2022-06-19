@@ -22,6 +22,7 @@ export const NumberInput = () => {
   return (
     <TextField
       className={classes.numberInput}
+      defaultValue="1"
       type="number"
       variant="filled"
       InputProps={{
