@@ -13,7 +13,7 @@
        "ProductType": "Books",
        "barCode": "123456789",
        "coverBookImage": "https://images-na.ssl-images-amazon.com/images/I/410lHsidiVL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg",
-       "backBookImage": "https://ff.lnwfile.com/bf6au9.jpg"
+       "backBookImage": ""
     },
     {
        "ID": 12,
