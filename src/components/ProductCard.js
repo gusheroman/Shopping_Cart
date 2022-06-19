@@ -12,10 +12,14 @@ import RadioButtonUncheckedOutlinedIcon from "@material-ui/icons/RadioButtonUnch
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import CancelIcon from "@material-ui/icons/Cancel";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Typography } from "@material-ui/core";
 =======
 import { Typography, InputAdornment } from "@material-ui/core";
 >>>>>>> parent of c76f2db (Update ProductCard(add button))
+=======
+import { Typography } from "@material-ui/core";
+>>>>>>> parent of 4b91f17 (Updatae Product Card)
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -44,6 +48,7 @@ const useStyles = makeStyles({
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     },
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
   availableContainer: {},
 =======
@@ -106,6 +111,9 @@ const useStyles = makeStyles({
     fontWeight: 600,
   }
 >>>>>>> parent of c76f2db (Update ProductCard(add button))
+=======
+  availableContainer: {},
+>>>>>>> parent of 4b91f17 (Updatae Product Card)
 });
 
 const ProductCard = ({
@@ -131,6 +139,7 @@ const ProductCard = ({
               perferendis distinctio, magnam aperiam aliquid incidunt.
             </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             <Box style={{ display: "flex", justifyContent: "flex-start" }}>
               <Rating
@@ -152,6 +161,8 @@ const ProductCard = ({
             <Typography className={classes.price}>THB {price}.00</Typography>
           </div>
 >>>>>>> parent of c76f2db (Update ProductCard(add button))
+=======
+>>>>>>> parent of 4b91f17 (Updatae Product Card)
         </div>
       </div>
     </div>
