@@ -2,19 +2,19 @@ import { TextField } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 const useStyles = makeStyles({
-  addButton: {
-    marginRight: "64px",
-    width: "209px",
-    height: "50px",
-    "&.MuiButton-contained": {
-      backgroundColor: "#0156FF",
-      color: "white",
-      boxShadow: "none",
-      borderRadius: "50px",
-      fontFamily: "prompt",
-      fontSize: "14px",
-    },
-  },
+    numberInput: {
+        marginRight: "64px",
+        width: "122px",
+        "& .MuiFilledInput-root": {
+          borderRadius: "6px",
+        },
+        "& .MuiFilledInput-underline:before": {
+          borderBottom: "none",
+        },
+        "& .MuiFilledInput-underline:after": {
+          borderBottom: "none",
+        },
+      },
 });
 export const NumberInput = () => {
   const classes = useStyles();
