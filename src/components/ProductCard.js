@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
+import EqualizerRoundedIcon from "@material-ui/icons/EqualizerRounded";
+import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
+import Button from "@material-ui/core/Button";
+import RadioButtonUncheckedOutlinedIcon from "@material-ui/icons/RadioButtonUncheckedOutlined";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { Typography } from "@material-ui/core";
-import { AddToCardButton } from "./button/AddToCardButton";
+import { Typography, InputAdornment } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -33,9 +38,6 @@ const useStyles = makeStyles({
       backgroundColor: "white",
       zIndex: 10,
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-      "& $unHiddenOnHover": {
-        display: "flex",
-      },
     },
   },
   availableContainer: {
@@ -67,13 +69,14 @@ const useStyles = makeStyles({
     height: "160px",
   },
   rating: {
-    padding: "2px 10px 2px 0px",
+    padding: "4px 10px 10px 0px",
 
     "&.MuiRating-root": {
       fontSize: "13px",
     },
   },
   reviews: {
+    margin: "2px",
     color: "grey",
     fontFamily: "Prompt",
     fontSize: "12px",
@@ -81,29 +84,20 @@ const useStyles = makeStyles({
   bookName: {
     fontSize: "14px",
     fontFamily: "Prompt",
-    fontWeight: 500,
-    marginBottom: "12px",
+    fontWeight: 600,
   },
   discountPrice: {
     textDecoration: "line-through",
     color: "grey",
-    fontSize: "14px",
+    ontSize: "14px",
     fontFamily: "Prompt",
     fontWeight: 400,
   },
-  price: {
+  price:{
     ontSize: "18px",
     fontFamily: "Prompt",
     fontWeight: 600,
-  },
-  unHiddenOnHover: {
-    display: "none",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "#fff",
-    marginBottom: "24px",
-    cursor: "pointer",
-  },
+  }
 });
 
 const ProductCard = ({
@@ -144,9 +138,6 @@ const ProductCard = ({
                   alt="coverBookImage"
                 />
               </Box>
-            </div>
-            <div className={classes.unHiddenOnHover}>
-              <AddToCardButton />
             </div>
             <Box style={{ display: "flex", justifyContent: "flex-start" }}>
               <Rating

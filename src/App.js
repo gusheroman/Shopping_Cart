@@ -3,12 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/header/Navbar";
 import Index from './views/Index';
 import ProductDetail from './views/ProductDetail';
-import ScrollToTop from './components/ScrollToTop';
-
 function App() {
   return (
     <div className="App">
-      <ScrollToTop/>
       <Navbar />
       <div className="Content">
       <Routes>
