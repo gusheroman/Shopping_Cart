@@ -10,6 +10,7 @@ import Tab from "@material-ui/core/Tab";
 import { ShareIcon } from "../components/ShareIcon";
 import { AddButton } from "../components/button/AddButton";
 import { WishListButton } from "../components/button/WishListButton";
+import { NumberInput } from "../components/input/NumberInput";
 const useStyles = makeStyles({
   container: { margin: "0px 122px", padding: "56px 0px 0px 0px " },
   BookPreviewImage: {
@@ -141,17 +142,7 @@ const ProductDetail = () => {
               marginTop: "64px",
             }}
           >
-            <TextField
-              className={classes.numberInput}
-              type="number"
-              variant="filled"
-              InputProps={{
-                inputProps: {
-                  min: 0,
-                  style: { textAlign: "center", padding: "16px" },
-                },
-              }}
-            ></TextField>
+            <NumberInput />
             <AddButton />
             <WishListButton />
           </Box>
