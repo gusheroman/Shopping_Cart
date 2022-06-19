@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/header/Navbar";
 import Index from './views/Index';
 import ProductDetail from './views/ProductDetail';
+
 function App() {
   return (
     <div className="App">

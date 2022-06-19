@@ -6,7 +6,6 @@ import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Typography } from "@material-ui/core";
-import { AddToCardButton } from "./button/AddToCardButton";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -92,7 +91,7 @@ const useStyles = makeStyles({
     fontWeight: 400,
   },
   price: {
-    ontSize: "18px",
+    fontSize: "18px",
     fontFamily: "Prompt",
     fontWeight: 600,
   },
@@ -146,7 +145,7 @@ const ProductCard = ({
               </Box>
             </div>
             <div className={classes.unHiddenOnHover}>
-              <AddToCardButton />
+              {/* <AddToCardButton /> */}
             </div>
             <Box style={{ display: "flex", justifyContent: "flex-start" }}>
               <Rating
