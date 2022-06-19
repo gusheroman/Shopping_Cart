@@ -9,11 +9,11 @@ import CardSlider from "../components/slider/CardSlider";
 
 const useStyles = makeStyles(() => ({
   root: {
-    backgroundColor: "#F4F4F4",
+    backgroundColor: "white",
     minHeight: "100vh",
   },
   container: {
-    margin: "0px 220px",
+    padding: "0px 122px",
     paddingBottom: "220px",
   },
 
@@ -39,18 +39,18 @@ const Index = () => {
             ดูสินค้าขายดีทั้งหมด
           </Link>
         </Box>
-        <CardSlider
-          cardSlider={Book.map((book) => (
-            <Product
-              bookName={book.bookName}
-              rating={book.rating}
-              available={book.available}
-              price={book.price}
-              coverBookImage={book.coverBookImage}
-              ID={book.ID}
-            />
-          ))}
-        />
+
+        {Book.map((book) => (
+          <Product
+            bookName={book.bookName}
+            rating={book.rating}
+            available={book.available}
+            price={book.price}
+            coverBookImage={book.coverBookImage}
+            ID={book.ID}
+          />
+        ))}
+
         <Box
           style={{
             display: "flex",
