@@ -3,11 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import { useParams } from "react-router-dom";
 import Book from "../data/Book.json";
-import { Button, TextField, Typography } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import { TextField, Typography } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import { ShareIcon } from "../components/ShareIcon";
+import { AddButton } from "../components/button/AddButton";
+import { WishListButton } from "../components/button/WishListButton";
 const useStyles = makeStyles({
   container: { margin: "0px 122px", padding: "56px 0px 0px 0px " },
   BookPreviewImage: {
@@ -40,32 +42,6 @@ const useStyles = makeStyles({
     },
     "& .MuiFilledInput-underline:after": {
       borderBottom: "none",
-    },
-  },
-  addButton: {
-    marginRight: "64px",
-    width: "209px",
-    height: "50px",
-    "&.MuiButton-contained": {
-      backgroundColor: "#0156FF",
-      color: "white",
-      boxShadow: "none",
-      borderRadius: "50px",
-      fontFamily: "prompt",
-      fontSize: "14px",
-    },
-  },
-  wishListButton: {
-    marginRight: "64px",
-    width: "209px",
-    height: "50px",
-    "&.MuiButton-contained": {
-      backgroundColor: "#F2994A",
-      color: "white",
-      boxShadow: "none",
-      borderRadius: "50px",
-      fontFamily: "prompt",
-      fontSize: "14px",
     },
   },
   coverBookPreview: {
@@ -176,23 +152,20 @@ const ProductDetail = () => {
                 },
               }}
             ></TextField>
-
-            <Button
-              variant="contained"
-              size="large"
-              className={classes.addButton}
-            >
-              Add
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              className={classes.wishListButton}
-              startIcon={<FavoriteIcon />}
-            >
-              WishList
-            </Button>
+            <AddButton />
+            <WishListButton />
+          </Box>
+          <Box
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginTop: "64px",
+            }}
+          >
+            <Typography variant="subtitle1" gutterBottom>
+              แชร์ :
+            </Typography>
+            <ShareIcon />
           </Box>
         </div>
       </Box>
