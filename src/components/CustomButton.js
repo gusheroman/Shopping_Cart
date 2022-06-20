@@ -49,11 +49,13 @@ export const CustomButton = ({
   label,
   isWishListButton,
   isAddButton,
-  isAddtoCartButton
+  isAddtoCartButton,
+  click,
 }) => {
   const classes = useStyles();
   return (
     <Button
+      onClick={click}
       variant={variant}
       color="primary"
       size="large"

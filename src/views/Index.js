@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Slider from "../components/slider/ImageSlider";
 import Product from "../components/ProductCard";
@@ -7,7 +7,9 @@ import Book from "../data/Book.json";
 import Box from "@material-ui/core/Box";
 import CardSlider from "../components/slider/CardSlider";
 
-const useStyles = makeStyles({
+
+
+const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "white",
     minHeight: "100vh",
@@ -18,14 +20,19 @@ const useStyles = makeStyles({
   },
 
   link: { color: "black" },
-});
+}));
 
 const Index = () => {
   const classes = useStyles();
+
+
+
+
   return (
     <div className={classes.root}>
       <div className={classes.container}>
         <Slider />
+        
         <Box
           style={{
             display: "flex",
@@ -44,12 +51,7 @@ const Index = () => {
         <CardSlider key={Index}
           cardSlider={Book.map((book) => (
             <Product
-              bookName={book.bookName}
-              rating={book.rating}
-              available={book.available}
-              price={book.price}
-              coverBookImage={book.coverBookImage}
-              ID={book.ID}
+             book={book}
             />
           ))}
         />
@@ -69,12 +71,7 @@ const Index = () => {
         <CardSlider key={Index}
           cardSlider={Book.map((book) => (
             <Product
-              bookName={book.bookName}
-              rating={book.rating}
-              available={book.available}
-              price={book.price}
-              coverBookImage={book.coverBookImage}
-              ID={book.ID}
+             book={book}
             />
           ))}
         />

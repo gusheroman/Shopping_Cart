@@ -6,12 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { theme } from "./theme/Theme";
 import { ThemeProvider } from "@material-ui/core";
+import CartContextProvider from "./context/CartContext";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <App />
+        <CartContextProvider>
+          <App />
+        </CartContextProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>

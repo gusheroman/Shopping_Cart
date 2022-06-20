@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -8,6 +8,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import { Typography } from "@material-ui/core";
 import { CustomButton } from "./CustomButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import { CartContext } from "../context/CartContext";
 
 const useStyles = makeStyles({
   root: {
@@ -96,26 +97,22 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCard = ({
-  bookName,
-  rating,
-  available,
-  price,
-  coverBookImage,
-  ID,
-}) => {
+const ProductCard = ({book}) => {
   const classes = useStyles();
   const navigate = useNavigate();
-
+  const cart = useContext(CartContext);
+const addToCart = ()=>{
+  cart.addProductToCart(book)
+}
   return (
     <div className={classes.root}>
       <div
         className={classes.parentContainer}
-        onClick={() => navigate(`/product-detail/${ID}`)}
+        // onClick={() => navigate(`/product-detail/${ID}`)}
       >
         <div className={classes.childContainer}>
           <div class={classes.content}>
-            {available === true ? (
+            {book.available === true ? (
               <div className={classes.availableContainer}>
                 <CheckCircleIcon style={{ fontSize: "10px" }} />
                 <span>มีสินค้า</span>
@@ -130,13 +127,14 @@ const ProductCard = ({
               <Box style={{ display: "flex", justifyContent: "space-between" }}>
                 <img
                   className={classes.image}
-                  src={coverBookImage}
+                  src={book.coverBookImage}
                   alt="coverBookImage"
                 />
               </Box>
             </div>
             <div className={classes.unHiddenOnHover}>
               <CustomButton
+                click={addToCart}
                 variant="outlined"
                 isAddtoCartButton={true}
                 label="Add To Cart"
@@ -147,12 +145,12 @@ const ProductCard = ({
               <Rating
                 className={classes.rating}
                 name="read-only"
-                value={rating}
+                value={book.rating}
                 readOnly
               />
               <span className={classes.reviews}>
                 Reviews {"("}
-                {rating}
+                {book.rating}
                 {")"}
               </span>
             </Box>
@@ -161,7 +159,7 @@ const ProductCard = ({
               className={classes.bookName}
               style={{ marginBottom: "12px" }}
             >
-              {bookName}
+              {book.bookName}
             </Typography>
             <Typography
               variant="subtitle1"
@@ -173,10 +171,10 @@ const ProductCard = ({
                 fontWeight: 400,
               }}
             >
-              THB {price - 100}.00
+              THB {book.price - 100}.00
             </Typography>
             <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
-              THB {price}.00
+              THB {book.price}.00
             </Typography>
           </div>
         </div>
