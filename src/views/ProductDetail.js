@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Book from "../data/Book.json";
 import { Typography } from "@material-ui/core";
 import Tabs from "@material-ui/core/Tabs";
@@ -10,6 +10,9 @@ import { ShareIcon } from "../components/ShareIcon";
 import { NumberInput } from "../components/input/NumberInput";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { CustomButton } from "../components/CustomButton";
+import CardSlider from "../components/slider/CardSlider";
+import Product from "../components/ProductCard";
+import Index from "./Index";
 const useStyles = makeStyles({
   container: { margin: "0px 122px", padding: "56px 0px 0px 0px" },
   BookPreviewImage: {
@@ -24,12 +27,6 @@ const useStyles = makeStyles({
     marginTop: "20px",
     marginBottom: "50px",
     flexDirection: "column",
-  },
-  discountPrice: {
-    fontSize: "24px",
-    textDecoration: "line-through",
-    color: "grey",
-    paddingLeft: "12px",
   },
 
   coverBookPreview: {
@@ -68,6 +65,7 @@ const useStyles = makeStyles({
 const ProductDetail = () => {
   const { ID } = useParams();
   const classes = useStyles();
+  const navigate = useNavigate();
   const [data, setData] = useState({});
   const [value, setValue] = useState(0);
   const [image, setImage] = useState(false);
@@ -136,7 +134,15 @@ const ProductDetail = () => {
               ราคา
             </Typography>
             <Typography variant="h2"> THB{data.price}</Typography>
-            <Typography variant="h2" className={classes.discountPrice}>
+            <Typography
+              variant="h2"
+              style={{
+                fontSize: "24px",
+                textDecoration: "line-through",
+                color: "grey",
+                paddingLeft: "12px",
+              }}
+            >
               THB{data.price - 100}
             </Typography>
           </Box>
@@ -209,7 +215,7 @@ const ProductDetail = () => {
           <Typography
             variant="subtitle1"
             gutterBottom
-            style={{ fontWeight: 200 }}
+            style={{ fontWeight: 200, marginBottom: "129px" }}
           >
             {data.bookDetail}
           </Typography>
@@ -227,12 +233,42 @@ const ProductDetail = () => {
           <Typography
             variant="subtitle1"
             gutterBottom
-            style={{ fontWeight: 200 }}
+            style={{ fontWeight: 200, marginBottom: "129px" }}
           >
             {data.bookDetail}
           </Typography>
         </>
       )}
+
+      <Box
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+        container
+      >
+        <h2>สินค้าที่เกี่ยวข้อง</h2>
+        <Typography
+          className={classes.allProduct}
+          onClick={() => navigate(`/`)}
+        >
+          ดูสินค้าทั้งหมด
+        </Typography>
+      </Box>
+      <CardSlider
+        key={Index}
+        cardSlider={Book.map((book) => (
+          <Product
+            bookName={book.bookName}
+            rating={book.rating}
+            available={book.available}
+            price={book.price}
+            coverBookImage={book.coverBookImage}
+            ID={book.ID}
+          />
+        ))}
+      />
     </div>
   );
 };

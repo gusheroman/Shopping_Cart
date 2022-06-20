@@ -6,6 +6,9 @@ import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { Typography } from "@material-ui/core";
+import { CustomButton } from "./CustomButton";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -28,7 +31,7 @@ const useStyles = makeStyles({
     height: "300px",
     background: "white",
     "&:hover": {
-      height: "350px",
+      height: "420px",
       backgroundColor: "white",
       zIndex: 10,
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
@@ -77,19 +80,7 @@ const useStyles = makeStyles({
     fontFamily: "Prompt",
     fontSize: "12px",
   },
-  bookName: {
-    fontSize: "14px",
-    fontFamily: "Prompt",
-    fontWeight: 500,
-    marginBottom: "12px",
-  },
-  discountPrice: {
-    textDecoration: "line-through",
-    color: "grey",
-    fontSize: "14px",
-    fontFamily: "Prompt",
-    fontWeight: 400,
-  },
+
   price: {
     fontSize: "18px",
     fontFamily: "Prompt",
@@ -145,7 +136,12 @@ const ProductCard = ({
               </Box>
             </div>
             <div className={classes.unHiddenOnHover}>
-              {/* <AddToCardButton /> */}
+              <CustomButton
+                variant="outlined"
+                isAddtoCartButton={true}
+                label="Add To Cart"
+                startIcon={<ShoppingCartOutlinedIcon />}
+              />
             </div>
             <Box style={{ display: "flex", justifyContent: "flex-start" }}>
               <Rating
@@ -160,11 +156,28 @@ const ProductCard = ({
                 {")"}
               </span>
             </Box>
-            <Typography className={classes.bookName}>{bookName}</Typography>
-            <Typography className={classes.discountPrice}>
+            <Typography
+              variant="h4"
+              className={classes.bookName}
+              style={{ marginBottom: "12px" }}
+            >
+              {bookName}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{
+                textDecoration: "line-through",
+                color: "grey",
+                fontSize: "14px",
+
+                fontWeight: 400,
+              }}
+            >
               THB {price - 100}.00
             </Typography>
-            <Typography className={classes.price}>THB {price}.00</Typography>
+            <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
+              THB {price}.00
+            </Typography>
           </div>
         </div>
       </div>

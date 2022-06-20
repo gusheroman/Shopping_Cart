@@ -49,6 +49,7 @@ export const CustomButton = ({
   label,
   isWishListButton,
   isAddButton,
+  isAddtoCartButton
 }) => {
   const classes = useStyles();
   return (
@@ -61,7 +62,9 @@ export const CustomButton = ({
           ? classes.wishListButton
           : isAddButton
           ? classes.addButon
-          : classes.addToCartButton
+          : isAddtoCartButton
+          ? classes.addToCartButton
+          : classes.vutton
       }
       startIcon={startIcon}
     >

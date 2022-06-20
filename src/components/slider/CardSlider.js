@@ -18,6 +18,7 @@ const useStyles = makeStyles({
       fontSize: "15px",
       margin: "0px 12px",
     },
+    height:"500px",
   },
 });
 
@@ -33,7 +34,6 @@ const CardSlider = ({ cardSlider }) => {
   };
 
   return (
-    <div>
       <Carousel
         className={classes.slide}
         swipeable={false}
@@ -44,7 +44,6 @@ const CardSlider = ({ cardSlider }) => {
       >
         {cardSlider}
       </Carousel>
-    </div>
   );
 };
 

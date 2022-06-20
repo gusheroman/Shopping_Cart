@@ -10,7 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import johnAvatar from "../../assests/image/john.jpg";
 import { Typography } from "@material-ui/core";
 import { SearchBar } from "../input/SearchBar";
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles({
   root: {
     display: "flex",
     background: "white",
@@ -55,7 +55,7 @@ const useStyles = makeStyles(() => ({
     width: "36px",
     height: "36px",
   },
-}));
+});
 const Navbar = () => {
   const classes = useStyles();
   const [handleOpenSearch, setHandleOpenSearch] = useState(false);

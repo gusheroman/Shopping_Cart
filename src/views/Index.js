@@ -7,7 +7,7 @@ import Book from "../data/Book.json";
 import Box from "@material-ui/core/Box";
 import CardSlider from "../components/slider/CardSlider";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles({
   root: {
     backgroundColor: "white",
     minHeight: "100vh",
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 
   link: { color: "black" },
-}));
+});
 
 const Index = () => {
   const classes = useStyles();
@@ -31,6 +31,7 @@ const Index = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+          
           }}
           container
         >
@@ -39,18 +40,19 @@ const Index = () => {
             ดูสินค้าขายดีทั้งหมด
           </Link>
         </Box>
-
-        {Book.map((book) => (
-          <Product
-            bookName={book.bookName}
-            rating={book.rating}
-            available={book.available}
-            price={book.price}
-            coverBookImage={book.coverBookImage}
-            ID={book.ID}
-          />
-        ))}
-
+        <div>
+        <CardSlider key={Index}
+          cardSlider={Book.map((book) => (
+            <Product
+              bookName={book.bookName}
+              rating={book.rating}
+              available={book.available}
+              price={book.price}
+              coverBookImage={book.coverBookImage}
+              ID={book.ID}
+            />
+          ))}
+        />
         <Box
           style={{
             display: "flex",
@@ -63,7 +65,8 @@ const Index = () => {
             ดูสินค้าขายดีทั้งหมด
           </Link>
         </Box>
-        <CardSlider
+        </div>
+        <CardSlider key={Index}
           cardSlider={Book.map((book) => (
             <Product
               bookName={book.bookName}
