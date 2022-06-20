@@ -97,13 +97,14 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCard = ({book}) => {
+const ProductCard = ({ book }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const cart = useContext(CartContext);
-const addToCart = ()=>{
-  cart.addProductToCart(book)
-}
+  const addToCart = () => {
+    cart.addProductToCart(book);
+  };
+  console.log(book)
   return (
     <div className={classes.root}>
       <div

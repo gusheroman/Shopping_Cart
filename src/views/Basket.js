@@ -10,6 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import { NumberInput } from "../components/input/NumberInput";
 import { CustomButton } from "../components/CustomButton";
 import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   container: {
@@ -62,16 +63,14 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [createData("Frozen yoghurt", 159, 6.0, 24, 4.0)];
-
 const Basket = () => {
   const classes = useStyles();
   const cart = useContext(CartContext);
   console.log(cart.products);
+
+
+
+  
   return (
     <div className={classes.container}>
       <Typography variant="h2">ตะกร้าสินค้า</Typography>
@@ -100,16 +99,18 @@ const Basket = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
-                    <TableRow key={row.name}>
+                  {cart.products.map((row) => (
+                    <TableRow key={row.ID}>
                       <TableCell style={{ paddingLeft: "0px" }} scope="row">
                         <div className={classes.imageContainer}>
                           <img
                             className={classes.image}
-                            src={"https://ff.lnwfile.com/bf6au9.jpg"}
+                            src={row.coverBookImage}
                             alt="coverBookImage"
                           />
-                          <span className={classes.bookName}>bookName</span>
+                          <span className={classes.bookName}>
+                            {row.bookName}
+                          </span>
                         </div>
                       </TableCell>
                       <TableCell
@@ -123,7 +124,7 @@ const Basket = () => {
                             margin: "24px 0px",
                           }}
                         >
-                          THB400
+                          THB{row.price}
                         </Typography>
                       </TableCell>
                       <TableCell style={{ verticalAlign: "top" }}>
@@ -140,7 +141,7 @@ const Basket = () => {
                             margin: "24px 0px",
                           }}
                         >
-                          THB400
+                          THB{row.price}
                         </Typography>
                       </TableCell>
                     </TableRow>
@@ -148,8 +149,27 @@ const Basket = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-            <CustomButton /> <CustomButton />
+            <Box
+              style={{
+                display: "flex",
+                marginTop: "24px",
+                marginBottom: "240px",
+              }}
+            >
+              <Link style={{ textDecoration: "none" }} to={"/"}>
+                <CustomButton
+                  isBuymoreProduct={true}
+                  variant="outlined"
+                  label="ซื้อสินค้าต่อไป"
+                />
+              </Link>
+              <CustomButton
+                isClearBasketButton={true}
+                label="ล้างตระกร้าสินค้า"
+              />
+            </Box>
           </div>
+
           <Box>
             <div className={classes.totalOrder}>
               <div className={classes.totalOrderContainer}>
@@ -160,28 +180,43 @@ const Basket = () => {
                   สรุปคำสั่งซื้อ
                 </Typography>
                 <Box style={{ display: "flex" }}>
-                  <Box
-                    style={{ flexGrow: 1, marginTop: "24px" }}
-                    bgcolor="grey.300"
-                  >
+                  <Box style={{ flexGrow: 1, marginTop: "24px" }}>
                     <Typography variant="subtitle2">ยอดรวม</Typography>
                   </Box>
-                  <Box style={{ marginTop: "24px" }} bgcolor="grey.300">
+                  <Box style={{ marginTop: "24px" }}>
                     <Typography variant="subtitle2">THB499</Typography>
                   </Box>
                 </Box>
                 <Box style={{ display: "flex" }}>
-                  <Box
-                    style={{ flexGrow: 1, marginTop: "24px" }}
-                    bgcolor="grey.300"
-                  >
+                  <Box style={{ flexGrow: 1, marginTop: "24px" }}>
                     <Typography variant="subtitle2">ค่าส่ง</Typography>
                   </Box>
-                  <Box style={{ margin: "24px 0px" }} bgcolor="grey.300">
+                  <Box style={{ margin: "24px 0px" }}>
                     <Typography variant="subtitle2">THB499</Typography>
                   </Box>
                 </Box>
                 <hr />
+                <Box style={{ display: "flex" }}>
+                  <Box style={{ flexGrow: 1, marginTop: "24px" }}>
+                    <Typography variant="subtitle2">ยอดสุทธิ</Typography>
+                  </Box>
+                  <Box>
+                    <Typography
+                      style={{
+                        marginTop: "24px",
+                        marginBottom: "24px",
+                        fontSize: "18px",
+                        fontWeight: 600,
+                      }}
+                      variant="subtitle2"
+                    >
+                      500THB
+                    </Typography>
+                  </Box>
+                </Box>
+                <Link style={{ textDecoration: "none" }} to={"/checkOut"}>
+                  <CustomButton label="ไปชำระเงิน" />
+                </Link>
               </div>
             </div>
           </Box>

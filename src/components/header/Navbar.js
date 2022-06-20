@@ -10,6 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import johnAvatar from "../../assests/image/john.jpg";
 import { Typography } from "@material-ui/core";
 import { SearchBar } from "../input/SearchBar";
+import CartDropDown from "../CartDropDown";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -68,7 +69,6 @@ const Navbar = () => {
             Book
           </Typography>
         </Link>
-
         {handleOpenSearch === false ? (
           <>
             <ul className={classes.menuItems}>
@@ -97,7 +97,9 @@ const Navbar = () => {
               setHandleOpenSearch(true);
             }}
           />
-          <ShoppingCartOutlinedIcon style={{ marginRight: "18px" }} />
+          <div style={{ marginRight: "18px" }}>
+            <CartDropDown />
+          </div>
           <Avatar className={classes.avatar} alt="John Doe" src={johnAvatar} />
         </div>
       ) : (
@@ -110,7 +112,9 @@ const Navbar = () => {
                 setHandleOpenSearch(false);
               }}
             />
-            <ShoppingCartOutlinedIcon style={{ marginRight: "18px" }} />
+            <div style={{ marginRight: "18px" }}>
+              <CartDropDown />
+            </div>
             <Avatar
               className={classes.avatar}
               alt="John Doe"

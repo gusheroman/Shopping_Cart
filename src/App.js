@@ -4,6 +4,7 @@ import Navbar from "./components/header/Navbar";
 import Index from "./views/Index";
 import ProductDetail from "./views/ProductDetail";
 import Basket from "./views/Basket";
+import CheckOut from "./views/CheckOut";
 import ScrollToTop from "./components/ScrollToTop";
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Index />} />
           <Route path="/product-detail/:ID" element={<ProductDetail />} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="/checkOut" element={<CheckOut />} />
         </Routes>
       </div>
     </div>

@@ -41,6 +41,43 @@ const useStyles = makeStyles({
       borderStyle: "solid",
     },
   },
+  buymoreProductButton: {
+    marginRight: "10px",
+    "&.MuiButton-outlined": {
+      width: "300px",
+      color: "#666666",
+      boxShadow: "none",
+      borderRadius: "50px",
+      borderColor: "#666666",
+      fontFamily: "prompt",
+      fontSize: "14px",
+      fontWeight: 500,
+      borderStyle: "solid",
+    },
+  },
+  clearBasketButton: {
+    width: "300px",
+    "&.MuiButton-contained": {
+      backgroundColor: "black",
+      color: "white",
+      boxShadow: "none",
+      borderRadius: "50px",
+      fontFamily: "prompt",
+      fontSize: "14px",
+    },
+  },
+  button: {
+    width: "100%",
+    height: "50px",
+    "&.MuiButton-contained": {
+      backgroundColor: "#0156FF",
+      color: "white",
+      boxShadow: "none",
+      borderRadius: "50px",
+      fontFamily: "prompt",
+      fontSize: "14px",
+    },
+  },
 });
 
 export const CustomButton = ({
@@ -50,6 +87,8 @@ export const CustomButton = ({
   isWishListButton,
   isAddButton,
   isAddtoCartButton,
+  isBuymoreProduct,
+  isClearBasketButton,
   click,
 }) => {
   const classes = useStyles();
@@ -66,7 +105,11 @@ export const CustomButton = ({
           ? classes.addButon
           : isAddtoCartButton
           ? classes.addToCartButton
-          : classes.vutton
+          : isBuymoreProduct
+          ? classes.buymoreProductButton
+          : isClearBasketButton
+          ? classes.clearBasketButton
+          : classes.button
       }
       startIcon={startIcon}
     >
