@@ -73,9 +73,8 @@ const ProductDetail = () => {
   const cart = useContext(CartContext);
   const addToCart = () => {
     cart.addProductToCart(data);
-    console.log(data);
   };
-
+  console.log(data);
   useEffect(() => {
     const data = Book.find((data) => String(data.ID) === ID);
     if (data) {
