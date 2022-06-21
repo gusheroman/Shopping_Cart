@@ -11,6 +11,8 @@ import { NumberInput } from "../components/input/NumberInput";
 import { CustomButton } from "../components/CustomButton";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import deleteItem from "../assests/image/close.png";
+import modifyItem from "../assests/image/modify.png";
 
 const useStyles = makeStyles({
   container: {
@@ -68,9 +70,6 @@ const Basket = () => {
   const cart = useContext(CartContext);
   console.log(cart.products);
 
-
-
-  
   return (
     <div className={classes.container}>
       <Typography variant="h2">ตะกร้าสินค้า</Typography>
@@ -133,16 +132,47 @@ const Basket = () => {
                         </div>
                       </TableCell>
                       <TableCell style={{ verticalAlign: "top" }}>
-                        <Typography
-                          variant="h2"
+                        <Box
                           style={{
-                            fontSize: "16px",
-                            fontWeight: 600,
-                            margin: "24px 0px",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "space-between",
                           }}
                         >
-                          THB{row.price}
-                        </Typography>
+                          <Box>
+                            <Typography
+                              variant="h2"
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: 600,
+                                margin: "24px 0px",
+                              }}
+                            >
+                              THB{row.price}
+                            </Typography>
+                          </Box>
+                          <Box>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                cursor: "pointer",
+                              }}
+                            >
+                              <img
+                                src={deleteItem}
+                                alt="icon"
+                                style={{ width: "26px", height: "26px", marginBottom:"6px" }}
+                              ></img>
+                              <img
+                                src={modifyItem}
+                                alt="icon"
+                                style={{ width: "26px", height: "26px" }}
+                              ></img>
+                            </div>
+                          </Box>
+                        </Box>
                       </TableCell>
                     </TableRow>
                   ))}

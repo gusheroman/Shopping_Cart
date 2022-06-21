@@ -42,12 +42,10 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   cardContent: {
-    marginLeft:"24px"
+    marginLeft: "24px",
   },
   radio: {
-    "&.MuiRadio-root": {
-      
-    },
+    "&.MuiRadio-root": {},
     "&.MuiIconButton-label": {
       height: "100px",
     },

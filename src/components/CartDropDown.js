@@ -8,6 +8,8 @@ import { Typography } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { CustomButton } from "./CustomButton";
 import { Link } from "react-router-dom";
+import deleteItem from "../assests/image/close.png";
+import modifyItem from "../assests/image/modify.png";
 const useStyles = makeStyles({
   container: {
     "& .MuiList-root": {
@@ -89,62 +91,121 @@ const CartDropDown = () => {
               </Typography>
               <Link style={{ textDecoration: "none" }} to={"/basket"}>
                 <CustomButton
-                  isAddtoCartButton={true}
+                  isModifyBasket={true}
                   variant="outlined"
                   label="ดูหรือแก้ไขตะกร้าของฉัน"
                 />
               </Link>
             </Box>
             <hr />
+
+            {cart.products.map((cart) => (
+              <>
+                {console.log(cart.price)}
+                <Box
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Box
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "12px 30px",
+                    }}
+                  >
+                    <Box>
+                      <Typography
+                        variant="subtitle2"
+                        style={{
+                          marginRight: "10px",
+                          fontSize: "13px",
+                          fontWeight: 500,
+                        }}
+                      >
+                        1x
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <img
+                        src={cart.coverBookImage}
+                        className={classes.imageContainer}
+                        alt="CoverImage"
+                      ></img>
+                    </Box>
+                    <Box>
+                      <Typography
+                        variant="subtitle2"
+                        style={{
+                          marginLeft: "10px",
+                          fontSize: "13px",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {cart.bookName}
+                      </Typography>
+                    </Box>
+                    <span>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <img
+                          src={deleteItem}
+                          alt="icon"
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            marginBottom: "6px",
+                            marginLeft: "20px",
+                          }}
+                        ></img>
+                        <img
+                          src={modifyItem}
+                          alt="icon"
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            marginLeft: "20px",
+                          }}
+                        ></img>
+                      </div>
+                    </span>
+                  </Box>
+                  <hr style={{ width: "100%" }} />
+                </Box>
+              </>
+            ))}
+
             <Box
               style={{
                 display: "flex",
-                flexDirection: "row",
-                alignItems: "flex-start",
-                padding: "12px 30px",
+                flexDirection: "column",
+                alignItems: "center",
+                paddingTop: "20px",
+                paddingBottom: "40px",
               }}
             >
-              {cart.products.map((cart) => (
-                <>
-                  {console.log(cart.price)}
-
-                  <Typography
-                    variant="subtitle2"
-                    style={{
-                      marginLeft: "10px",
-                      fontSize: "13px",
-                      fontWeight: 500,
-                    }}
-                  ></Typography>
-                  <img
-                    src={cart.coverBookImage}
-                    className={classes.imageContainer}
-                    alt="CoverImage"
-                  ></img>
-                  <Typography
-                    variant="subtitle2"
-                    style={{
-                      marginLeft: "10px",
-                      fontSize: "13px",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {cart.bookName}
-                  </Typography>
-                </>
-              ))}
+              <Typography
+                variant="h2"
+                style={{ fontSize: "18px", fontWeight: 600 , marginBottom:"12px"}}
+              >
+                <span
+                  style={{ fontSize: "14px", fontWeight: 500, color: "grey" }}
+                >
+                  ยอดรวม:
+                </span>{" "}
+                THB499.00
+              </Typography>
+              <Link style={{ textDecoration: "none" }} to={"/checkout"}>
+                <CustomButton isCardButton={true} label="ไปชำระเงิน" />
+              </Link>
             </Box>
-            <hr />
-            <Typography
-              variant="subtitle2"
-              style={{
-                marginLeft: "10px",
-                fontSize: "13px",
-                fontWeight: 500,
-              }}
-            >
-              ยอดรวม: {cart.products.price}
-            </Typography>
           </Menu>
         </>
       ) : (
@@ -162,16 +223,16 @@ const CartDropDown = () => {
           onClose={handleClose}
         >
           <Box
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-          <Typography variant="subtitle2" style={{}}>
-            ไม่มีสินค้ากรุณาเลือกสินค้า
-          </Typography>
-          <></>
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="subtitle2" style={{}}>
+              ไม่มีสินค้ากรุณาเลือกสินค้า
+            </Typography>
+            <></>
           </Box>
         </Menu>
       )}

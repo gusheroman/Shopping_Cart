@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   slide: {
     "& .react-multiple-carousel__arrow": {
       borderRadius: "20px",
-      background:"#737373"
+      background: "#737373",
     },
     "& .react-multiple-carousel__arrow--left": {
       left: "-15px",
@@ -18,32 +18,29 @@ const useStyles = makeStyles({
       fontSize: "15px",
       margin: "0px 12px",
     },
-    height:"500px",
   },
 });
 
 const CardSlider = ({ cardSlider }) => {
   const classes = useStyles();
   const responsive = {
-  
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 5,
     },
-    
   };
 
   return (
-      <Carousel
-        className={classes.slide}
-        swipeable={false}
-        draggable={false}
-        infinite={true}
-        showDots={false}
-        responsive={responsive}
-      >
-        {cardSlider}
-      </Carousel>
+    <Carousel
+      className={classes.slide}
+      swipeable={false}
+      draggable={false}
+      infinite={true}
+      showDots={false}
+      responsive={responsive}
+    >
+      {cardSlider}
+    </Carousel>
   );
 };
 

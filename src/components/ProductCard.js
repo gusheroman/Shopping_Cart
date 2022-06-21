@@ -194,10 +194,10 @@ const ProductCard = ({ book }) => {
                 fontWeight: 400,
               }}
             >
-              THB {book.price - 100}.00
+              THB {book.price}.00
             </Typography>
             <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
-              THB {book.price}.00
+              THB {book.price-100}.00
             </Typography>
           </div>
         </div>

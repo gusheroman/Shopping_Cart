@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Book from "../data/Book.json";
 import { Typography } from "@material-ui/core";
 import Tabs from "@material-ui/core/Tabs";
@@ -14,8 +14,9 @@ import CardSlider from "../components/slider/CardSlider";
 import Product from "../components/ProductCard";
 import Index from "./Index";
 import { CartContext } from "../context/CartContext";
+import { ProductBaner } from "../components/ProductBaner";
 const useStyles = makeStyles({
-  container: { margin: "0px 122px", padding: "56px 0px 0px 0px" },
+  container: { margin: "0px 122px", padding: "56px 0px 260px 0px" },
   BookPreviewImage: {
     height: "580px",
     width: "394px",
@@ -66,14 +67,13 @@ const useStyles = makeStyles({
 const ProductDetail = () => {
   const { ID } = useParams();
   const classes = useStyles();
-  const navigate = useNavigate();
   const [data, setData] = useState({});
   const [value, setValue] = useState(0);
   const [image, setImage] = useState(false);
-  const cart = useContext(CartContext)
+  const cart = useContext(CartContext);
   const addToCart = () => {
     cart.addProductToCart(data);
-    console.log(data)
+    console.log(data);
   };
 
   useEffect(() => {
@@ -139,7 +139,7 @@ const ProductDetail = () => {
             >
               ราคา
             </Typography>
-            <Typography variant="h2"> THB{data.price}</Typography>
+            <Typography variant="h2"> THB{data.price - 100}</Typography>
             <Typography
               variant="h2"
               style={{
@@ -149,7 +149,7 @@ const ProductDetail = () => {
                 paddingLeft: "12px",
               }}
             >
-              THB{data.price - 100}
+              THB{data.price}
             </Typography>
           </Box>
           <Box
@@ -160,7 +160,7 @@ const ProductDetail = () => {
             }}
           >
             <NumberInput />
-            <CustomButton isAddButton={true} label="Add" click={addToCart}/>
+            <CustomButton isAddButton={true} label="Add" click={addToCart} />
             <CustomButton
               isWishListButton={true}
               startIcon={<FavoriteIcon />}
@@ -246,22 +246,7 @@ const ProductDetail = () => {
         </>
       )}
 
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-        container
-      >
-        <h2>สินค้าที่เกี่ยวข้อง</h2>
-        <Typography
-          className={classes.allProduct}
-          onClick={() => navigate(`/`)}
-        >
-          ดูสินค้าทั้งหมด
-        </Typography>
-      </Box>
+      <ProductBaner Title2={"ดูสินค้าทั้งหมด"} Title1={"สินค้าที่เกี่ยวข้อง"} />
       <CardSlider
         key={Index}
         cardSlider={Book.map((book) => (

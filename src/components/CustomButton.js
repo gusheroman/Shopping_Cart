@@ -78,6 +78,33 @@ const useStyles = makeStyles({
       fontSize: "14px",
     },
   },
+  isCardButton: {
+    width: "280px",
+    height: "50px",
+    height:"40px",
+    "&.MuiButton-contained": {
+      backgroundColor: "#0156FF",
+      color: "white",
+      boxShadow: "none",
+      borderRadius: "50px",
+      fontFamily: "prompt",
+      fontSize: "14px",
+    },
+  },
+  modifyBasket: {
+    width: "280px",
+    height:"40px",
+    "&.MuiButton-outlined": {
+      color: "#0156FF",
+      boxShadow: "none",
+      borderRadius: "50px",
+      fontFamily: "prompt",
+      fontSize: "14px",
+      fontWeight: 500,
+      borderColor: "#0156FF",
+      borderStyle: "solid",
+    },
+  },
 });
 
 export const CustomButton = ({
@@ -90,6 +117,8 @@ export const CustomButton = ({
   isBuymoreProduct,
   isClearBasketButton,
   click,
+  isCardButton,
+  isModifyBasket,
 }) => {
   const classes = useStyles();
   return (
@@ -109,6 +138,10 @@ export const CustomButton = ({
           ? classes.buymoreProductButton
           : isClearBasketButton
           ? classes.clearBasketButton
+          : isCardButton
+          ? classes.isCardButton
+          : isModifyBasket
+          ? classes.modifyBasket
           : classes.button
       }
       startIcon={startIcon}
