@@ -82,7 +82,6 @@ const useStyles = makeStyles({
   },
   isCardButton: {
     width: "280px",
-    height: "50px",
     height: "40px",
     "&.MuiButton-contained": {
       backgroundColor: "#0156FF",

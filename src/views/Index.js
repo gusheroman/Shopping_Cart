@@ -5,7 +5,6 @@ import Product from "../components/ProductCard";
 import Book from "../data/Book.json";
 import CardSlider from "../components/slider/CardSlider";
 import { ProductBaner } from "../components/ProductBaner";
-import { Box } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "white",

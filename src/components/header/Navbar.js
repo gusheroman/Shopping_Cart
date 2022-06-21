@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 import Avatar from "@material-ui/core/Avatar";
 import johnAvatar from "../../assests/image/john.jpg";
@@ -23,7 +22,6 @@ const useStyles = makeStyles({
     boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
     paddingLeft: "122px",
     paddingRight: "122px",
-    display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
   },
@@ -43,7 +41,6 @@ const useStyles = makeStyles({
     fontSize: "16px",
     fontWeight: 400,
     lineHeight: "26px",
-    color: "#000000",
   },
   icon: {
     display: "flex",
