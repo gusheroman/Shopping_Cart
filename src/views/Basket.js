@@ -81,6 +81,10 @@ const Basket = () => {
     cart.removeProductInCart(product);
   };
 
+  const clearCart =()=>{
+    cart.clearCart()
+  }
+
   return (
     <div className={classes.container}>
       <Typography variant="h2">ตะกร้าสินค้า</Typography>
@@ -179,7 +183,7 @@ const Basket = () => {
                                   height: "26px",
                                   marginBottom: "6px",
                                 }}
-                                onClick={() => removeProductInCarts(data)}
+                                onClick={()=> removeProductInCarts(data)}
                               ></img>
                               <img
                                 src={modifyItem}
@@ -210,6 +214,7 @@ const Basket = () => {
                 />
               </Link>
               <CustomButton
+              click={clearCart}
                 isClearBasketButton={true}
                 label="ล้างตระกร้าสินค้า"
               />

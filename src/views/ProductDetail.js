@@ -138,7 +138,10 @@ const ProductDetail = () => {
             >
               ราคา
             </Typography>
-            <Typography variant="h2"> THB{(data.price-data.discount).toFixed(2)}</Typography>
+            <Typography variant="h2">
+              {" "}
+              THB{(data.price - data.discount).toFixed(2)}
+            </Typography>
             <Typography
               variant="h2"
               style={{
@@ -246,12 +249,14 @@ const ProductDetail = () => {
       )}
 
       <ProductBaner Title2={"ดูสินค้าทั้งหมด"} Title1={"สินค้าที่เกี่ยวข้อง"} />
+      <div onClick={()=>setImage(false)}>
       <CardSlider
         key={Index}
         cardSlider={Book.map((book) => (
           <Product book={book} />
         ))}
       />
+      </div>
     </div>
   );
 };
