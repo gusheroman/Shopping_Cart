@@ -5,6 +5,7 @@ import Product from "../components/ProductCard";
 import Book from "../data/Book.json";
 import CardSlider from "../components/slider/CardSlider";
 import { ProductBaner } from "../components/ProductBaner";
+import { Box } from "@material-ui/core";
 const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "white",
@@ -20,6 +21,7 @@ const useStyles = makeStyles(() => ({
 
 const Index = () => {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <div className={classes.container}>
@@ -31,25 +33,27 @@ const Index = () => {
           />
         </div>
         <div>
+          <div>
+            <CardSlider
+              key={Index}
+              cardSlider={Book.map((book) => (
+                <Product book={book} />
+              ))}
+            />
+            <div style={{ marginTop: "40px" }}>
+              <ProductBaner
+                Title2={"ดูสินค้าขายดีทั้งหมด"}
+                Title1={"สินค้าแนะนำ"}
+              />
+            </div>
+          </div>
           <CardSlider
             key={Index}
             cardSlider={Book.map((book) => (
               <Product book={book} />
             ))}
           />
-          <div style={{ marginTop: "40px" }}>
-            <ProductBaner
-              Title2={"ดูสินค้าขายดีทั้งหมด"}
-              Title1={"สินค้าแนะนำ"}
-            />
-          </div>
         </div>
-        <CardSlider
-          key={Index}
-          cardSlider={Book.map((book) => (
-            <Product book={book} />
-          ))}
-        />
       </div>
     </div>
   );

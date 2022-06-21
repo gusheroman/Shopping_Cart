@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
   wishListButton: {
+    textTransform: "none",
     width: "209px",
     height: "50px",
     "&.MuiButton-contained": {
@@ -16,6 +17,7 @@ const useStyles = makeStyles({
     },
   },
   addButon: {
+    textTransform: "none",
     marginRight: "18px",
     width: "209px",
     height: "50px",
@@ -81,7 +83,7 @@ const useStyles = makeStyles({
   isCardButton: {
     width: "280px",
     height: "50px",
-    height:"40px",
+    height: "40px",
     "&.MuiButton-contained": {
       backgroundColor: "#0156FF",
       color: "white",
@@ -93,7 +95,7 @@ const useStyles = makeStyles({
   },
   modifyBasket: {
     width: "280px",
-    height:"40px",
+    height: "40px",
     "&.MuiButton-outlined": {
       color: "#0156FF",
       boxShadow: "none",

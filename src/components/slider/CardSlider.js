@@ -18,6 +18,9 @@ const useStyles = makeStyles({
       fontSize: "15px",
       margin: "0px 12px",
     },
+    "&.react-multi-carousel-list":{
+      paddingBottom:"122px"
+    }
   },
 });
 
