@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -8,8 +8,8 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import { Typography } from "@material-ui/core";
 import { CustomButton } from "./CustomButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import { CartContext } from "../context/CartContext";
-
+import favouriteIcon from "../assests/image/favourite.png";
+import ratingIcon from "../assests/image/rating.png";
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -38,6 +38,10 @@ const useStyles = makeStyles({
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
       "& $unHiddenOnHover": {
         display: "flex",
+      },
+      "& $unHiddenIconOnHover": {
+        display: "flex",
+        flexDirection:"column"
       },
     },
   },
@@ -95,21 +99,19 @@ const useStyles = makeStyles({
     marginBottom: "24px",
     cursor: "pointer",
   },
+  unHiddenIconOnHover: {
+    display: "none",
+  },
 });
 
 const ProductCard = ({ book }) => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const cart = useContext(CartContext);
-  const addToCart = () => {
-    cart.addProductToCart(book);
-  };
-  console.log(book)
   return (
     <div className={classes.root}>
       <div
         className={classes.parentContainer}
-        // onClick={() => navigate(`/product-detail/${ID}`)}
+        onClick={() => navigate(`/product-detail/${book.ID}`)}
       >
         <div className={classes.childContainer}>
           <div class={classes.content}>
@@ -131,11 +133,31 @@ const ProductCard = ({ book }) => {
                   src={book.coverBookImage}
                   alt="coverBookImage"
                 />
+                <Box className={classes.unHiddenIconOnHover}>
+                  <img
+                    style={{
+                      margin: "0px 20px",
+                      marginBottom:"6px",
+                      width: "30px",
+                      height: "30px",
+                    }}
+                    src={favouriteIcon}
+                    alt="favIcon"
+                  />
+                  <img
+                    style={{
+                      margin: "0px 20px",
+                      width: "30px",
+                      height: "30px",
+                    }}
+                    src={ratingIcon}
+                    alt="ratingIcon"
+                  />
+                </Box>
               </Box>
             </div>
             <div className={classes.unHiddenOnHover}>
               <CustomButton
-                click={addToCart}
                 variant="outlined"
                 isAddtoCartButton={true}
                 label="Add To Cart"

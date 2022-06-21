@@ -41,7 +41,9 @@ const useStyles = makeStyles({
     height: "122px",
     alignItems: "center",
   },
-  cardContent: {},
+  cardContent: {
+    marginLeft:"24px"
+  },
   radio: {
     "&.MuiRadio-root": {
       
@@ -131,7 +133,7 @@ const CheckOut = () => {
               >
                 <Grid item xs={12}>
                   <Card className={classes.card}>
-                    <CardContent>
+                    <CardContent className={classes.cardContent}>
                       <FormControlLabel
                         value="freeShipping"
                         control={<Radio className={classes.radio} />}
@@ -144,7 +146,7 @@ const CheckOut = () => {
                     </CardContent>
                   </Card>
                   <Card className={classes.card} style={{ marginTop: "14px" }}>
-                    <CardContent>
+                    <CardContent className={classes.cardContent}>
                       <FormControlLabel
                         value="kerry"
                         control={<Radio className={classes.radio} />}
@@ -178,7 +180,7 @@ const CheckOut = () => {
               >
                 <Grid item xs={12}>
                   <Card className={classes.card}>
-                    <CardContent>
+                    <CardContent className={classes.cardContent}>
                       <FormControlLabel
                         value="cash"
                         control={<Radio className={classes.radio} />}
@@ -204,7 +206,7 @@ const CheckOut = () => {
                     </CardContent>
                   </Card>
                   <Card className={classes.card} style={{ marginTop: "14px" }}>
-                    <CardContent>
+                    <CardContent className={classes.cardContent}>
                       <FormControlLabel
                         value="debit"
                         control={<Radio className={classes.radio} />}

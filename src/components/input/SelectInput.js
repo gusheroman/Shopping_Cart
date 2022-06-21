@@ -32,18 +32,7 @@ const country = [
     value: "Thailand",
     label: "Thailand",
   },
-  {
-    value: "EngLand",
-    label: "EngLand",
-  },
-  {
-    value: "Turkey",
-    label: "Turkey",
-  },
-  {
-    value: "Norway",
-    label: "Norway",
-  },
+ 
 ];
 
 export const SelectInput = () => {

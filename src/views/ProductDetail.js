@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import { useParams, useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import { CustomButton } from "../components/CustomButton";
 import CardSlider from "../components/slider/CardSlider";
 import Product from "../components/ProductCard";
 import Index from "./Index";
+import { CartContext } from "../context/CartContext";
 const useStyles = makeStyles({
   container: { margin: "0px 122px", padding: "56px 0px 0px 0px" },
   BookPreviewImage: {
@@ -69,6 +70,11 @@ const ProductDetail = () => {
   const [data, setData] = useState({});
   const [value, setValue] = useState(0);
   const [image, setImage] = useState(false);
+  const cart = useContext(CartContext)
+  const addToCart = () => {
+    cart.addProductToCart(data);
+    console.log(data)
+  };
 
   useEffect(() => {
     const data = Book.find((data) => String(data.ID) === ID);
@@ -154,7 +160,7 @@ const ProductDetail = () => {
             }}
           >
             <NumberInput />
-            <CustomButton isAddButton={true} label="Add" />
+            <CustomButton isAddButton={true} label="Add" click={addToCart}/>
             <CustomButton
               isWishListButton={true}
               startIcon={<FavoriteIcon />}
@@ -259,14 +265,7 @@ const ProductDetail = () => {
       <CardSlider
         key={Index}
         cardSlider={Book.map((book) => (
-          <Product
-            bookName={book.bookName}
-            rating={book.rating}
-            available={book.available}
-            price={book.price}
-            coverBookImage={book.coverBookImage}
-            ID={book.ID}
-          />
+          <Product book={book} />
         ))}
       />
     </div>
