@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Menu from "@material-ui/core/Menu";
 import ShoppingCartOutlined from "@material-ui/icons/ShoppingCartOutlined";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,9 +18,13 @@ const useStyles = makeStyles({
     },
   },
   containerNoProduct: {
+    
     "& .MuiList-root": {
       width: "320px",
       height: "100px",
+      display:"flex",
+    alignItems:"center",
+    justifyContent:"space-around",
     },
   },
   imageContainer: {
@@ -47,6 +51,9 @@ const CartDropDown = ({ allPrice }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const removeProductInCarts = (product) => {
+    cart.removeProductInCart(product);
   };
 
   return (
@@ -159,6 +166,7 @@ const CartDropDown = ({ allPrice }) => {
                         }}
                       >
                         <img
+                        onClick={()=> removeProductInCarts(cart)}
                           src={deleteItem}
                           alt="icon"
                           style={{

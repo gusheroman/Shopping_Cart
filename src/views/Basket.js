@@ -13,8 +13,6 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import deleteItem from "../assests/image/close.png";
 import modifyItem from "../assests/image/modify.png";
-import ProductCard from "../components/ProductCard";
-
 const useStyles = makeStyles({
   container: {
     marginTop: "138px",
@@ -79,11 +77,10 @@ const Basket = () => {
   );
   const allPrice = productsPrice - discountProductsPrice;
 
-  const removeProductInCarts = () => {
-    cart.removeProductInCart();
+  const removeProductInCarts = (product) => {
+    cart.removeProductInCart(product);
   };
 
-  console.log()
   return (
     <div className={classes.container}>
       <Typography variant="h2">ตะกร้าสินค้า</Typography>
@@ -182,7 +179,7 @@ const Basket = () => {
                                   height: "26px",
                                   marginBottom: "6px",
                                 }}
-                                onClick={() => removeProductInCarts()}
+                                onClick={() => removeProductInCarts(data)}
                               ></img>
                               <img
                                 src={modifyItem}

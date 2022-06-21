@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useContext} from "react";
+import { CartContext } from "../context/CartContext";
 import { makeStyles } from "@material-ui/styles";
 import { Box, FormControlLabel, Grid, Typography } from "@material-ui/core";
 import credit from "../assests/image/credit.png";
@@ -54,6 +55,17 @@ const useStyles = makeStyles({
 
 const CheckOut = () => {
   const classes = useStyles();
+  const cart = useContext(CartContext);
+  const discountProductsPrice = Object.values(cart.products).reduce(
+    (r, { discount }) => r + discount,
+    0
+  );
+  const productsPrice = Object.values(cart.products).reduce(
+    (r, { price }) => r + price,
+    0
+  );
+  const allPrice = productsPrice - discountProductsPrice;
+
   return (
     <div className={classes.container}>
       <Typography variant="h2">ตะกร้าสินค้า</Typography>
@@ -250,7 +262,7 @@ const CheckOut = () => {
                     <Typography variant="subtitle2">ยอดรวม</Typography>
                   </Box>
                   <Box style={{ marginTop: "24px" }}>
-                    <Typography variant="subtitle2">THB499</Typography>
+                    <Typography variant="subtitle2">THB{allPrice}</Typography>
                   </Box>
                 </Box>
                 <Box style={{ display: "flex" }}>
@@ -276,7 +288,7 @@ const CheckOut = () => {
                       }}
                       variant="subtitle2"
                     >
-                      500THB
+                      THB{allPrice+1}
                     </Typography>
                   </Box>
                 </Box>

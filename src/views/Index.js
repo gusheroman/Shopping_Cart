@@ -24,19 +24,25 @@ const Index = () => {
     <div className={classes.root}>
       <div className={classes.container}>
         <Slider />
-         <div style={{marginTop:"52px"}}>
-        <ProductBaner  Title2={"ดูสินค้าขายดีทั้งหมด"} Title1={"สินค้าขายดี"}/>
+        <div style={{ marginTop: "52px" }}>
+          <ProductBaner
+            Title2={"ดูสินค้าขายดีทั้งหมด"}
+            Title1={"สินค้าขายดี"}
+          />
         </div>
         <div>
           <CardSlider
             key={Index}
             cardSlider={Book.map((book) => (
-              <Product book={book}  />
+              <Product book={book} />
             ))}
           />
-          <div style={{marginTop:"40px"}}>
-         <ProductBaner Title2={"ดูสินค้าขายดีทั้งหมด"} Title1={"สินค้าแนะนำ"}/>
-         </div>
+          <div style={{ marginTop: "40px" }}>
+            <ProductBaner
+              Title2={"ดูสินค้าขายดีทั้งหมด"}
+              Title1={"สินค้าแนะนำ"}
+            />
+          </div>
         </div>
         <CardSlider
           key={Index}
