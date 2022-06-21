@@ -1,11 +1,13 @@
 import { createTheme } from "@material-ui/core/styles";
 import SFThonburiBold from "../assests/font/SFThonburi-Bold.ttf";
 export const theme = createTheme({
-    palette: {
-     common:{
-      main:"black"
-     }
+  palette: {
+    secondary: {
+      light: "#0066ff",
+      main: "#0156FF",
+      contrastText: "#ffcc00",
     },
+  },
   typography: {
     h1: {
       fontFamily: SFThonburiBold,
@@ -19,7 +21,7 @@ export const theme = createTheme({
       fontSize: "36px",
       fontWeight: 600,
       lineHeight: 1.5,
-      color:"black"
+      color: "black",
     },
     h3: {
       fontFamily: "prompt",
@@ -27,7 +29,7 @@ export const theme = createTheme({
       fontWeight: 500,
       lineHeight: 1.5,
     },
-    h4:{
+    h4: {
       fontFamily: "prompt",
       fontSize: "13px",
       fontWeight: 600,
@@ -40,13 +42,21 @@ export const theme = createTheme({
       lineHeight: "27px",
       color: "#000000",
     },
-    subtitle2:{
+    subtitle2: {
       fontFamily: "prompt",
       fontStyle: "normal",
       fontSize: "16px",
       fontWeight: 500,
       lineHeight: "26px",
       color: "#000000",
-    }
+    },
+    body1: {
+      fontFamily: "prompt",
+      fontStyle: "normal",
+      fontSize: "16px",
+      fontWeight: 400,
+      lineHeight: "26px",
+      color: "#000000",
+    },
   },
 });
