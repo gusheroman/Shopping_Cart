@@ -73,7 +73,6 @@ const ProductDetail = () => {
   const cart = useContext(CartContext);
   const addToCart = () => {
     cart.addProductToCart(data);
-    console.log(data);
   };
 
   useEffect(() => {
@@ -139,7 +138,7 @@ const ProductDetail = () => {
             >
               ราคา
             </Typography>
-            <Typography variant="h2"> THB{data.price - 100}</Typography>
+            <Typography variant="h2"> THB{(data.price-data.discount).toFixed(2)}</Typography>
             <Typography
               variant="h2"
               style={{
@@ -149,7 +148,7 @@ const ProductDetail = () => {
                 paddingLeft: "12px",
               }}
             >
-              THB{data.price}
+              THB{data.price}.00
             </Typography>
           </Box>
           <Box

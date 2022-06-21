@@ -13,6 +13,7 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import deleteItem from "../assests/image/close.png";
 import modifyItem from "../assests/image/modify.png";
+import ProductCard from "../components/ProductCard";
 
 const useStyles = makeStyles({
   container: {
@@ -68,8 +69,21 @@ const useStyles = makeStyles({
 const Basket = () => {
   const classes = useStyles();
   const cart = useContext(CartContext);
-  console.log(cart.products);
+  const discountProductsPrice = Object.values(cart.products).reduce(
+    (r, { discount }) => r + discount,
+    0
+  );
+  const productsPrice = Object.values(cart.products).reduce(
+    (r, { price }) => r + price,
+    0
+  );
+  const allPrice = productsPrice - discountProductsPrice;
 
+  const removeProductInCarts = () => {
+    cart.removeProductInCart();
+  };
+
+  console.log()
   return (
     <div className={classes.container}>
       <Typography variant="h2">ตะกร้าสินค้า</Typography>
@@ -98,17 +112,17 @@ const Basket = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {cart.products.map((row) => (
-                    <TableRow key={row.ID}>
+                  {cart.products.map((data) => (
+                    <TableRow key={data.ID}>
                       <TableCell style={{ paddingLeft: "0px" }} scope="row">
                         <div className={classes.imageContainer}>
                           <img
                             className={classes.image}
-                            src={row.coverBookImage}
+                            src={data.coverBookImage}
                             alt="coverBookImage"
                           />
                           <span className={classes.bookName}>
-                            {row.bookName}
+                            {data.bookName}
                           </span>
                         </div>
                       </TableCell>
@@ -123,7 +137,7 @@ const Basket = () => {
                             margin: "24px 0px",
                           }}
                         >
-                          THB{row.price}
+                          THB{data.price}
                         </Typography>
                       </TableCell>
                       <TableCell style={{ verticalAlign: "top" }}>
@@ -149,7 +163,7 @@ const Basket = () => {
                                 margin: "24px 0px",
                               }}
                             >
-                              THB{row.price}
+                              THB{data.price}
                             </Typography>
                           </Box>
                           <Box>
@@ -163,7 +177,12 @@ const Basket = () => {
                               <img
                                 src={deleteItem}
                                 alt="icon"
-                                style={{ width: "26px", height: "26px", marginBottom:"6px" }}
+                                style={{
+                                  width: "26px",
+                                  height: "26px",
+                                  marginBottom: "6px",
+                                }}
+                                onClick={() => removeProductInCarts()}
                               ></img>
                               <img
                                 src={modifyItem}
@@ -214,7 +233,10 @@ const Basket = () => {
                     <Typography variant="subtitle2">ยอดรวม</Typography>
                   </Box>
                   <Box style={{ marginTop: "24px" }}>
-                    <Typography variant="subtitle2">THB499</Typography>
+                    <Typography variant="subtitle2">
+                      {" "}
+                      THB{allPrice.toFixed(2)}
+                    </Typography>
                   </Box>
                 </Box>
                 <Box style={{ display: "flex" }}>
@@ -222,7 +244,7 @@ const Basket = () => {
                     <Typography variant="subtitle2">ค่าส่ง</Typography>
                   </Box>
                   <Box style={{ margin: "24px 0px" }}>
-                    <Typography variant="subtitle2">THB499</Typography>
+                    <Typography variant="subtitle2">THB1.00</Typography>
                   </Box>
                 </Box>
                 <hr />
@@ -240,7 +262,7 @@ const Basket = () => {
                       }}
                       variant="subtitle2"
                     >
-                      500THB
+                      THB{(allPrice + 1).toFixed(2)}
                     </Typography>
                   </Box>
                 </Box>

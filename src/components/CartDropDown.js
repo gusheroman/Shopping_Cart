@@ -28,11 +28,19 @@ const useStyles = makeStyles({
     width: "65px",
   },
 });
-const CartDropDown = () => {
+const CartDropDown = ({ allPrice }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const cart = useContext(CartContext);
-  const [allPrice, setAllPrice] = useState([]);
+  const discountProductsPrice = Object.values(cart.products).reduce(
+    (r, { discount }) => r + discount,
+    0
+  );
+  const productsPrice = Object.values(cart.products).reduce(
+    (r, { price }) => r + price,
+    0
+  );
+  allPrice = productsPrice - discountProductsPrice;
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -40,10 +48,7 @@ const CartDropDown = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // cart.products.filter((item) => {
-  //   console.log((item.ID).length)
-  // });
-  // console.log(allPrice);
+
   return (
     <div>
       <Badge badgeContent={cart.products.length} color="primary">
@@ -60,7 +65,6 @@ const CartDropDown = () => {
                 transform: "translateX(-38%) translateY(17.3%)",
               },
             }}
-            MenuListProps={{}}
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
@@ -100,8 +104,7 @@ const CartDropDown = () => {
             <hr />
 
             {cart.products.map((cart) => (
-              <>
-                {console.log(cart.price)}
+              <div key={cart.ID}>
                 <Box
                   style={{
                     display: "flex",
@@ -179,7 +182,7 @@ const CartDropDown = () => {
                   </Box>
                   <hr style={{ width: "100%" }} />
                 </Box>
-              </>
+              </div>
             ))}
 
             <Box
@@ -193,14 +196,18 @@ const CartDropDown = () => {
             >
               <Typography
                 variant="h2"
-                style={{ fontSize: "18px", fontWeight: 600 , marginBottom:"12px"}}
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  marginBottom: "12px",
+                }}
               >
                 <span
                   style={{ fontSize: "14px", fontWeight: 500, color: "grey" }}
                 >
                   ยอดรวม:
-                </span>{" "}
-                THB499.00
+                </span>
+                THB{allPrice.toFixed(2)}
               </Typography>
               <Link style={{ textDecoration: "none" }} to={"/checkout"}>
                 <CustomButton isCardButton={true} label="ไปชำระเงิน" />

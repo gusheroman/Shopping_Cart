@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -10,6 +10,8 @@ import { CustomButton } from "./CustomButton";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import favouriteIcon from "../assests/image/favourite.png";
 import ratingIcon from "../assests/image/rating.png";
+
+
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
       },
       "& $unHiddenIconOnHover": {
         display: "flex",
-        flexDirection:"column"
+        flexDirection: "column",
       },
     },
   },
@@ -137,7 +139,7 @@ const ProductCard = ({ book }) => {
                   <img
                     style={{
                       margin: "0px 20px",
-                      marginBottom:"6px",
+                      marginBottom: "6px",
                       width: "30px",
                       height: "30px",
                     }}
@@ -194,10 +196,10 @@ const ProductCard = ({ book }) => {
                 fontWeight: 400,
               }}
             >
-              THB {book.price}.00
+              THB {(book.price - book.discount).toFixed(2)}
             </Typography>
             <Typography variant="subtitle1" style={{ fontWeight: 600 }}>
-              THB {book.price-100}.00
+              THB {book.price.toFixed(2)}
             </Typography>
           </div>
         </div>

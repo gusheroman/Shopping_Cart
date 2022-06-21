@@ -258,7 +258,7 @@ const CheckOut = () => {
                     <Typography variant="subtitle2">ค่าส่ง</Typography>
                   </Box>
                   <Box style={{ margin: "24px 0px" }}>
-                    <Typography variant="subtitle2">THB499</Typography>
+                    <Typography variant="subtitle2">THB1.00</Typography>
                   </Box>
                 </Box>
                 <hr />
